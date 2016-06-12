@@ -1,0 +1,605 @@
+INSTRUCTIONS
+
+01: Initiailize the html -------------------------------------------------------
+NOTE: for all html elements go to https://developer.mozilla.org/en-US/docs/Web/HTML/Element
+
+// index.html
+<html>
+<head>
+	
+</head>
+<body>
+
+</body>
+</html>
+
+02: Provide a title ------------------------------------------------------------
+NOTE: https://developer.mozilla.org/en-US/docs/Web/HTML/Element#Document_metadata
+NOTE: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title
+
+// index.html
+<head>
+	<title>MyMessage!</title>
+</head>
+
+03: Fill in some elements ------------------------------------------------------
+NOTE: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements
+NOTE: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p
+
+// index.html
+<body>
+	<h1>Welcome to My Message!</h1>
+	<p>Here you can message anyone who's signed up!</p>
+</body>
+
+04: Let's create a new page ----------------------------------------------------
+
+// createuser.html
+<html>
+<head>
+	<title>Sign Up</title>
+</head>
+<body>
+	<header>
+		<h1>My Message</h1>
+	</header>
+</body>
+</html>
+
+05: Link to the new page -------------------------------------------------------
+NOTE: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a
+
+// index.html
+<body>
+	// ...
+	<a href="createuser.html" class="button">Sign Up</a>
+</body>
+
+06: Build a form ---------------------------------------------------------------
+NOTE: https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms
+NOTE: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form
+NOTE: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
+
+// createuser.html
+<body>
+	// ...
+	<h2>Sign Up</h2>
+	<form>
+		<label for="username">Username:</label>
+		<input type="text" id="username" />
+		<label for="password1">Password:</label>
+		<input type="password" id="password1" />
+		<label for="password2">Confirm Password:</label>
+		<input type="password" id="password2" />
+		<input type="submit" class="button" />
+	</form>
+</body>
+
+07: Start styling --------------------------------------------------------------
+NOTE: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style
+
+// createuser.html
+<head>
+	// ...
+	<style>
+		header {
+			background-color: blue;
+		}
+	</style>
+</head>
+
+08: Put that in a separate file ------------------------------------------------
+NOTE: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link
+
+// index.html
+<head>
+	// ...
+	<link href="main.css" rel="stylesheet" type="text/css">
+</head>
+
+// createuser.html
+<head>
+	// ...
+	// remove the style tag
+	<link href="main.css" rel="stylesheet" type="text/css">
+</head>
+
+// main.css
+header {
+	background-color:#0084FF;
+}
+
+09: Add the background image to the home page ----------------------------------
+NOTE: https://developer.mozilla.org/en-US/docs/Web/CSS/position
+NOTE: https://developer.mozilla.org/en-US/docs/Web/CSS/background
+
+// index.html
+<body>
+	<div class="home-container"> 
+		<h1>Welcome to My Message!</h1>
+		<p>Here you can message anyone who's signed up!</p>
+		<a href="createuser.html" class="button">Sign Up</a>
+	</div>
+</body>
+
+// main.css
+.home-container {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-image: url("assets/background.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+10: Style the text with flex-box -----------------------------------------------
+NOTE: Useful resource for centering: http://howtocenterincss.com/
+NOTE: Best reference for flexbox: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+NOTE: Get flexbox practice: http://flexboxfroggy.com/
+NOTE: 
+
+// index.html
+<body>
+	<div class="home-container"> 
+		<div class="home-text-container">
+			<h1>Welcome to My Message!</h1>
+			<p>Here you can message anyone who's signed up!</p>
+			<a href="createuser.html" class="button">Sign Up</a>
+		</div>
+	</div>
+</body>
+
+// main.css
+.home-container {
+	// ...
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.home-text-container {
+	color: #FFF;
+	text-align: center;
+}
+
+.home-text-container h1 {
+	font-size: 50px;
+}
+
+.home-text-container p {
+	margin-bottom: 30px;
+}
+
+11: Position absolute doesn't effect other elements ----------------------------
+
+// index.html
+<body>
+	<div class="home-container"> 
+		// ...
+		<div class="home-background-shader">
+	</div>
+</body>
+
+// main.css
+.home-background-shader {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+12: Adjust the z-index ---------------------------------------------------------
+NOTE: https://developer.mozilla.org/en-US/docs/Web/CSS/z-index
+
+// main.css
+.home-text-container {
+	z-index: 1;
+}
+
+.home-background-shader {
+	z-index: 0;
+}
+
+13: Import a better font -------------------------------------------------------
+NOTE: https://developer.mozilla.org/en-US/docs/Web/CSS/@import
+NOTE: Here's where our font is from: https://www.google.com/fonts#UsePlace:use/Collection:Roboto
+
+// main.css
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100);
+
+body {
+	font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+	font-weight: 100;
+}
+
+// ...
+
+14: Create an animated button --------------------------------------------------
+NOTE: https://developer.mozilla.org/en-US/docs/Web/CSS/transition
+NOTE: https://developer.mozilla.org/en-US/docs/Web/CSS/box-shadow
+
+// main.css
+.button {
+	padding: 10px;
+	background-color: #00DD00;
+	border-radius: 2px;
+	color: #FFF;
+	text-decoration: none;
+	display: block;
+	border: none;
+	width: 100%;
+	cursor: pointer;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.button:hover {
+	background-color: #00FF00;
+	transition: all 0.5s ease;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+15: Positioning and the Box Model ----------------------------------------------
+
+// createuser.html
+<body>
+	// ...
+	<div class="signup-form">
+		<h2>Sign Up</h2>
+		<form method="GET" action="message.html">
+			// ...
+		</form>
+	</div>
+</body>
+
+// main.css
+header {
+	position: relative;
+	height: 70px;
+	background-color: #0084FF;
+	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+	z-index: 5;
+}
+
+header h1 {
+	color: #FFF;
+	margin: 0;
+	position: absolute;
+	top: 14px;
+	left: 10px;
+}
+
+.signup-form {
+	position: relative;
+	margin: auto;
+	width: 400px;
+	background-color: #FFF;
+	border-radius: 5px;
+	padding: 20px;
+	margin-top: 20px;
+	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+16: Override the default body margin -------------------------------------------
+NOTE: here's the default stylsheet for webkit browsers (Chrome / Opera): http://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css
+
+// main.css
+body {
+	background-color: #F1F1F1;
+	font-family: 'Roboto', sans-serif;
+	margin: 0;
+}
+
+17: Selecting elements by their attributes for form styling --------------------
+NOTE: https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors
+
+// main.css
+.signup-form input[type=text], .signup-form input[type=password] {
+	display: block;
+	width: 100%;
+	font-size: 20px;
+	padding: 10px;
+	border-radius: 10px;
+	border: 1px solid #CCC;
+	outline: none;
+	margin-bottom: 20px;
+}
+
+18: Form navigation ------------------------------------------------------------
+NOTE: more information about form navigation: http://www.javascript-coder.com/html-form/html-form-tutorial-p1.phtml
+
+// createuser.html
+../
+<form method="GET" action="message.html">
+../
+
+// message.html
+<html>
+<head>
+	<title>Sign Up</title>
+	<link href="main.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<header>
+		<h1>My Message</h1>
+	</header>
+</body>
+</html>
+
+19: Let's push flexbox more ----------------------------------------------------
+NOTE: remember, this is a good reference: https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+// message.html
+<body>
+	<header>
+		<h1>My Message</h1>
+	</header>
+	<div class="message-content">
+		<div class="user-pane">
+			
+		</div>
+		<div class="message-pane">
+			<div class="messages">
+				
+			</div>
+			<div class="typing-area">
+				
+			</div>
+		</div>
+	</div>
+</body>
+
+// main.css
+.message-content {
+	position: absolute;
+	z-index: 1;
+	top: 70px;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	display: flex;
+	background-color: cyan;
+}
+
+.user-pane {
+	max-width: 300px;
+	min-width: 200px;
+	flex-grow: 1;
+	background-color: blue;
+}
+
+.message-pane {
+	flex-grow: 5;
+	display: flex;
+	flex-direction: column;
+	z-index: 0;
+	background-color: red;
+}
+
+.messages {
+	flex-grow: 1;
+	background-color: yellow;
+}
+
+.typing-area {
+	flex-grow: 0;
+	height: 50px;
+	background-color: green;
+}
+
+20: Convert everything to its semantic element ---------------------------------
+
+// message.html
+<body>
+	<header>
+		<h1>My Message</h1>
+	</header>
+	<div class="message-content">
+		<ul class="user-pane">
+			
+		</ul>
+		<div class="message-pane">
+			<ul class="messages">
+				
+			</ul>
+			<form class="typing-area">
+				
+			</form>
+		</div>
+	</div>
+</body>
+
+// main.css
+.user-pane {
+	// ...
+	margin: 0;
+}
+
+.messages {
+	// ...
+	margin: 0;
+}
+
+.typing-area {
+	// ...
+	margin: 0;
+}
+
+21: Make it look better --------------------------------------------------------
+
+// index.html
+// ...
+<form class="typing-area">
+	<input type="text" placeholder="Type your message here." />
+	<input type="submit" class="button" value="Send" />
+</form>
+// ...
+
+// main.css
+.message-content {
+	position: absolute;
+	z-index: 1;
+	top: 70px;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	display: flex;
+}
+
+.user-pane {
+	max-width: 300px;
+	min-width: 200px;
+	flex-grow: 1;
+	margin: 0;
+	background-color: #FFF;
+	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+	z-index: 1;
+	padding: 0;
+}
+
+.message-pane {
+	flex-grow: 5;
+	display: flex;
+	flex-direction: column;
+	z-index: 0;
+}
+
+.messages {
+	flex-grow: 1;
+	margin: 0;
+	padding: 20px;
+}
+
+.typing-area {
+	flex-grow: 0;
+	height: 50px;
+	background-color: #FFF;
+	margin: 0;
+	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+	display: flex;
+}
+
+.typing-area input[type=text] {
+	flex-grow: 1;
+	padding: 10px;
+	font-size: 16px;
+	outline: none;
+	border: none;
+}
+
+.typing-area input[type=submit] {
+	width: 70px;
+}
+
+22: Implement a list -----------------------------------------------------------
+NOTE: Some tips about styling lists: https://css-tricks.com/almanac/properties/l/list-style/
+
+// message.html
+// ...
+<ul class="user-pane">
+	<li class="user">Clayton</li>
+	<li class="user">Josh</li>
+	<li class="user">Pramod</li>
+	<li class="user">Saleh</li>
+	<li class="user">Jerry</li>
+</ul>
+// ...
+
+// main.css
+.user-pane li {
+	list-style: none;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid #ccc;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.user-pane li:hover {
+	background-color: #DDD;
+}
+
+23: Images ---------------------------------------------------------------------
+NOTE: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img
+
+// message.html
+// ...
+<ul class="user-pane">
+	<li class="user"><img class="profile-image" src="assets/clayton.jpg" />Clayton</li>
+	<li class="user"><img class="profile-image" src="assets/josh.jpeg" />Josh</li>
+	<li class="user"><img class="profile-image" src="assets/pramod.jpg" />Pramod</li>
+	<li class="user"><img class="profile-image" src="assets/saleh.png" />Saleh</li>
+	<li class="user"><img class="profile-image" src="assets/jerry.png" />Jerry</li>
+</ul>
+// ...
+
+// main.css
+.profile-image {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	margin-right: 5px;
+}
+
+24: Let's use more flexbox and overflow auto to add messages -------------------
+NOTE: https://developer.mozilla.org/en-US/docs/Web/CSS/overflow
+
+// message.html
+<ul class="messages">
+	<li class="message first-person-message">Hello</li>
+	<li class="message second-person-message">Hey. How's it going.</li>
+	<li class="message second-person-message">Havn't seen ya in a while</li>
+	<li class="message first-person-message">yeah. It's been like 2 years</li>
+	<li class="message second-person-message">2 years, 6 months, 12 days, 3 hours, 9 minutes and 48 seconds.</li>
+	<li class="message first-person-message">...</li>
+	<li class="message second-person-message">What?</li>
+	<li class="message first-person-message">that was pretty specific</li>
+	<li class="message second-person-message">was it?</li>
+	<li class="message second-person-message">oh well, you know. I really missed you</li>
+	<li class="message second-person-message">Hello?</li>
+	<li class="message second-person-message">Good Morning, beautiful</li>
+	<li class="message first-person-message">What!</li>
+	<li class="message second-person-message">Oh good. You're back. Look I just wanted to say that I love you and I missed you all this time we were apart. I think about you every day and I've even made a shrine in your honor. You're the only person for me and I can't imagine living without you. I hope that you feel the same.</li>
+	<li class="message second-person-message">Hello?</li>
+</ul>
+
+// main.css
+.messages {
+	flex-grow: 1;
+	padding: 20px;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	overflow-x: auto;
+}
+
+.message {
+	position: relative;
+	list-style: none;
+	margin: 3px;
+	border-radius: 20px;
+	padding: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+	font-size: 14px;
+	max-width: 60%;
+	box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.first-person-message {
+	align-self: flex-end;
+	background-color: #0084FF;
+	color: #FFF;
+}
+.second-person-message {
+	align-self: flex-start;
+	background-color: #CCC;
+}
